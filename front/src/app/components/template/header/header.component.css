@@ -1,0 +1,28 @@
+.header-spacer {
+  flex: 1 1 auto;
+}
+
+mat-drawer-container,
+mat-drawer-content {
+  display: block;
+  height: 100%;
+}
+main {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.header-sidenav {
+  padding: 20px;
+  width: 20vw;
+}
+
+.header-sidenav a {
+  display: grid;
+  align-items: center;
+  justify-content: start;
+}
+
+.template-content {
+  padding: 10px;
+}

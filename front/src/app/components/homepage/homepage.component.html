@@ -1,0 +1,69 @@
+<div class="home">
+  <div class="home-icon-principal">
+    <img src="../../../assets/auto-info-icon.svg" alt="Ícone do Auto Info" />
+    <h1>Auto Info</h1>
+    <h3>Guarde o histórico de seu veículo</h3>
+  </div>
+
+  <form class="home-form">
+    <label for="site-search">Pesquisa</label>
+    <mat-form-field class="home-full-width">
+      <input
+        matInput
+        type="search"
+        placeholder="Ex. Honda Civic 2024"
+        id="site-search"
+        name="q"
+      />
+    </mat-form-field>
+  </form>
+
+  <div class="home-content">
+    <div class="home-funcionalidades">
+      <div class="item-funcionalidade">
+        <img
+          src="../../../assets/car-search-icon.svg"
+          alt="Ícone de pesquisa de carro"
+        />
+        <p>
+          Pesquisa por veículos seperados por marca, modelo e ano e saiba tudo
+          sobre ele.
+        </p>
+      </div>
+      <div class="item-funcionalidade">
+        <img
+          src="../../../assets/car-save-icon.svg"
+          alt="Ícone de pesquisa de carro"
+        />
+        <p>Guarde as manutenções e histórico de seu veículo.</p>
+      </div>
+      <div class="item-funcionalidade">
+        <img
+          src="../../../assets/car-notification-icon.svg"
+          alt="Ícone de pesquisa de carro"
+        />
+        <p>
+          Receba notificações sobre as próximas manutenções de seu veículo e
+          sempre ande em dias.
+        </p>
+      </div>
+      <div class="item-funcionalidade">
+        <img
+          src="../../../assets/car-parts-icon.svg"
+          alt="Ícone de pesquisa de carro"
+        />
+        <p>Identifique e adquira as peças corretas via catálogo.</p>
+      </div>
+    </div>
+
+    <div class="home-latest-vehicles">
+      <div *ngFor="let carro of carros">
+        <app-card-lastest-vehicles
+          [marca]="carro.marca"
+          [modelo]="carro.modelo"
+          [ano]="carro.ano"
+        ></app-card-lastest-vehicles>
+      </div>
+    </div>
+  </div>
+</div>

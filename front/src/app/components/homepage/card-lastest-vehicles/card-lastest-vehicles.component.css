@@ -1,0 +1,5 @@
+.card-latest-vehicles {
+  margin-top: 5vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
