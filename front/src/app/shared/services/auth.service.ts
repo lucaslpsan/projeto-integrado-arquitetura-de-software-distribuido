@@ -123,6 +123,12 @@ export class AuthService {
   }
 
   get user(): User {
-    return JSON.parse(localStorage.getItem('user')!);
+    const user = JSON.parse(localStorage.getItem('user')!);
+    return user;
+  }
+
+  getToken() {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    return user.stsTokenManager.accessToken;
   }
 }

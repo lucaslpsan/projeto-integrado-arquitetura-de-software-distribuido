@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Vehicle } from 'src/app/models/vehicle';
 
 @Component({
   selector: 'app-card-lastest-vehicles',
@@ -6,7 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./card-lastest-vehicles.component.css'],
 })
 export class CardLastestVehiclesComponent {
-  @Input() marca = '';
-  @Input() modelo = '';
-  @Input() ano = 0;
+  @Input() vehicle!: Vehicle;
 }

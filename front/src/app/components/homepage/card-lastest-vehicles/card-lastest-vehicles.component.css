@@ -1,5 +1,14 @@
-.card-latest-vehicles {
-  margin-top: 5vh;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.card-latest-vehicles .mat-mdc-card-content {
+  display: flex;
+  gap: 15px;
+}
+
+.card-latest-vehicles .mat-mdc-card-content img {
+  width: 220px;
+  height: 120px;
+  object-fit: cover;
+}
+
+.card-latest-vehicles tr td:first-child {
+  font-weight: bold;
 }

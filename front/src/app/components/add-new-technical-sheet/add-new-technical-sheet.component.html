@@ -1,0 +1,166 @@
+<div class="add-new-techinical-sheet">
+  <h1>
+    Adicione uma nova ficha técnica e contribua com o crescimento da nossa base
+  </h1>
+
+  <mat-stepper orientation="vertical" #stepper>
+    <mat-step [stepControl]="firstFormGroup" state="model">
+      <form [formGroup]="firstFormGroup" class="vertical-align">
+        <ng-template matStepLabel>Modelo</ng-template>
+        <mat-form-field>
+          <mat-label>Marca</mat-label>
+          <mat-select required formControlName="brand">
+            <mat-option *ngFor="let brand of loadedBrands" [value]="brand.name">
+              {{ brand.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="firstFormGroup.get('brand')?.invalid">{{
+            getErrorMessage("brand", "Marca")
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Nome</mat-label>
+          <input
+            matInput
+            placeholder="Nome comercial do modelo"
+            formControlName="name"
+            required
+          />
+          <mat-error *ngIf="firstFormGroup.get('name')?.invalid">{{
+            getErrorMessage("name", "Nome")
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Ano</mat-label>
+          <input
+            matInput
+            type="number"
+            min="1900"
+            max="2024"
+            maxlength="4"
+            placeholder="2023"
+            formControlName="year"
+            required
+          />
+          <mat-error *ngIf="firstFormGroup.get('year')?.invalid">{{
+            getErrorMessage("year", "Ano")
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Origem</mat-label>
+          <mat-select formControlName="origin">
+            <mat-option value="NATIONAL">Nacional</mat-option>
+            <mat-option value="IMPORTED">Importado</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div>
+          <button mat-button matStepperNext>Próximo</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" state="engine">
+      <form [formGroup]="secondFormGroup" class="vertical-align">
+        <ng-template matStepLabel>Motor</ng-template>
+
+        <mat-form-field>
+          <mat-label>Propulsão</mat-label>
+          <mat-select formControlName="engine">
+            <mat-option value="ELETRIC">Elétrico</mat-option>
+            <mat-option value="COMBUSTION">Combustão</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Combustível</mat-label>
+          <mat-select required formControlName="fuel">
+            <mat-option *ngFor="let fuel of loadedFuels" [value]="fuel.type">
+              {{ fuel.desc }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="secondFormGroup.get('fuel')?.invalid">{{
+            getErrorMessage("fuel", "Combustível")
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Cavalos de potência</mat-label>
+          <input
+            matInput
+            type="number"
+            min="1"
+            max="2024"
+            maxlength="4"
+            placeholder="100"
+            formControlName="hp"
+            required
+          />
+          <mat-error *ngIf="firstFormGroup.get('hp')?.invalid">{{
+            getErrorMessage("hp", "Cavalos")
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Aspiração</mat-label>
+          <mat-select formControlName="aspiration">
+            <mat-option value="ASPIRATE">Natural</mat-option>
+            <mat-option value="TURBO">Turbocompressor</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="space-bottom-buttons">
+          <button mat-button matStepperPrevious>Voltar</button>
+          <button mat-button matStepperNext>Próximo</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Concluir edição</ng-template>
+      <h3>Ficha preenchida</h3>
+      <table class="end-sheet">
+        <tr>
+          <td>Marca</td>
+          <td>{{ firstFormGroup.get("brand")?.value }}</td>
+        </tr>
+        <tr>
+          <td>Nome</td>
+          <td>{{ firstFormGroup.get("name")?.value }}</td>
+        </tr>
+        <tr>
+          <td>Ano</td>
+          <td>{{ firstFormGroup.get("year")?.value }}</td>
+        </tr>
+        <tr>
+          <td>Origem</td>
+          <td>{{ firstFormGroup.get("origin")?.value }}</td>
+        </tr>
+      </table>
+      <div class="space-bottom-buttons">
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-raised-button color="primary" (click)="submeter()">
+          Submeter *
+        </button>
+      </div>
+      <p style="margin-top: 20px; font-size: smaller">
+        <span style="font-weight: bold">*</span> Ao submeter a ficha criada,
+        você concorda com os
+        <a routerLink="/termos-de-uso" target="_blank">termos de uso</a> e de
+        privacidade. Todas as submissões são verificadas e caso não contenha
+        flagrante equívoco ou dados enganosos são aprovadas para publicação
+        pública. As submissões são verificadas o mais rápido possível.
+      </p>
+    </mat-step>
+
+    <!-- Icon overrides. -->
+    <ng-template matStepperIcon="model">
+      <mat-icon>no_crash</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="engine">
+      <mat-icon>precision_manufacturing</mat-icon>
+    </ng-template>
+  </mat-stepper>
+</div>

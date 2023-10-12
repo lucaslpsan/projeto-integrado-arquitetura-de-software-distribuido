@@ -28,6 +28,9 @@ main {
 .header-sidenav {
   padding: 20px;
   width: 20vw;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .header-sidenav a {

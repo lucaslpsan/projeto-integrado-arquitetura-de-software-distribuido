@@ -1,6 +1,33 @@
 <div class="card-latest-vehicles">
   <mat-card>
-    <mat-card-header>{{ marca }} - {{ modelo }}</mat-card-header>
-    <mat-card-content>{{ ano }}</mat-card-content>
+    <mat-card-header>
+      <h4>
+        {{ vehicle.brand }} - {{ vehicle.name }} -
+        {{ vehicle.year }}
+      </h4>
+    </mat-card-header>
+    <mat-card-content>
+      <img width="200" matCardImage src="{{ vehicle.photoURL }}" alt="" />
+      <div class="infos">
+        <table class="end-sheet">
+          <tr>
+            <td>Cavalos</td>
+            <td>{{ vehicle.hp }}</td>
+          </tr>
+          <tr>
+            <td>Combustão</td>
+            <td>{{ vehicle.engine }}</td>
+          </tr>
+          <tr>
+            <td>Combustível</td>
+            <td>{{ vehicle.fuel }}</td>
+          </tr>
+          <tr>
+            <td>Origem</td>
+            <td>{{ vehicle.origin }}</td>
+          </tr>
+        </table>
+      </div>
+    </mat-card-content>
   </mat-card>
 </div>

@@ -19,6 +19,8 @@ import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
 import { HomeModule } from './components/homepage/home.module';
 import { AuthService } from './shared/services/auth.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './http-interceptors/auth-interceptor';
 
 @NgModule({
   declarations: [AppComponent, AboutpageComponent, TermspageComponent],

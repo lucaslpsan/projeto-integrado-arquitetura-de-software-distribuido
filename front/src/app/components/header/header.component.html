@@ -1,12 +1,19 @@
 <mat-drawer-container class="header-container" autosize>
-  <mat-drawer #drawer class="header-sidenav" mode="side">
-    <nav>
+  <mat-drawer #drawer mode="side">
+    <nav class="header-sidenav">
       <a
         mat-button
         routerLink="/"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
         >Principal</a
+      >
+      <a
+        mat-button
+        routerLink="/adicionar-nova-ficha-tecnica"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Cadastrar Nova Ficha Técnica</a
       >
       <a
         mat-button

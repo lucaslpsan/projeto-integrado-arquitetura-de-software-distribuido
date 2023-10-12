@@ -79,7 +79,8 @@
               "browserTarget": "autoinfo:build:production"
             },
             "development": {
-              "browserTarget": "autoinfo:build:development"
+              "browserTarget": "autoinfo:build:development",
+              "proxyConfig": "./proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

@@ -6,7 +6,7 @@
   </div>
 
   <form class="home-form">
-    <label for="site-search">Pesquisa</label>
+    <label for="site-search">Pesquisa de ficha técnica</label>
     <mat-form-field class="home-full-width">
       <input
         matInput
@@ -57,11 +57,10 @@
     </div>
 
     <div class="home-latest-vehicles">
+      <h2>Últimos veículos adicionados a base</h2>
       <div *ngFor="let carro of carros">
         <app-card-lastest-vehicles
-          [marca]="carro.marca"
-          [modelo]="carro.modelo"
-          [ano]="carro.ano"
+          [vehicle]="carro"
         ></app-card-lastest-vehicles>
       </div>
     </div>
