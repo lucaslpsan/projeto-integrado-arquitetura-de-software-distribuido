@@ -14,13 +14,21 @@
  * limitations under the License.
  */
 
-package dev.lucaslpsan.autoInfo.users;
+package dev.lucaslpsan.autoInfo.users.services;
+
+import java.util.concurrent.ExecutionException;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import dev.lucaslpsan.autoInfo.users.User;
+import dev.lucaslpsan.autoInfo.users.repositories.UserRepository;
+import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 @Service
+@Slf4j
 public class UserService {
 
   private final UserRepository userRepository;
@@ -34,7 +42,18 @@ public class UserService {
   @Transactional
   public Mono<String> removeUserByName(String name) {
     return userRepository
-        .delete(new User(name, 0))
+        .delete(new User(name))
         .map(unusedVoid -> name + "was successfully removed");
+  }
+
+  public User getUser(@NonNull String userId) {
+    User user = null;
+    try {
+      user = this.userRepository.findById(userId).toFuture().get();
+    } catch (InterruptedException | ExecutionException e) {
+      log.error("->getUser {}", userId, e.getStackTrace());
+    }
+
+    return user;
   }
 }

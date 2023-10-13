@@ -1,5 +1,6 @@
 package dev.lucaslpsan.autoInfo.vehicles;
 
+import com.google.cloud.Timestamp;
 import com.google.cloud.firestore.annotation.DocumentId;
 import com.google.cloud.spring.data.firestore.Document;
 
@@ -22,6 +23,7 @@ public class Vehicle {
     String id;
 
     String photoURL;
+    Timestamp timestamp;
 
     /* Modelo */
     String brand;

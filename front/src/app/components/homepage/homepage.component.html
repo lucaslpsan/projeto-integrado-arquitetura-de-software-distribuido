@@ -7,15 +7,63 @@
 
   <form class="home-form">
     <label for="site-search">Pesquisa de ficha técnica</label>
+
     <mat-form-field class="home-full-width">
       <input
         matInput
-        type="search"
-        placeholder="Ex. Honda Civic 2024"
-        id="site-search"
-        name="q"
+        placeholder="Ex. Honda Civic 2023"
+        [matAutocomplete]="auto"
+        [formControl]="searchVehiclesCtrl"
+        [(ngModel)]="selectedVehicle"
       />
+      <button
+        *ngIf="selectedVehicle"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="clearSelection()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-autocomplete
+        [panelWidth]="400"
+        #auto="matAutocomplete"
+        (optionSelected)="onSelected()"
+        [displayWith]="displayWith"
+      >
+        <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+        <ng-container *ngIf="!isLoading">
+          <mat-option
+            *ngFor="let vehicle of filteredVehicles"
+            [value]="vehicle"
+          >
+            <span
+              ><b>{{ vehicle.name }}</b> ({{ vehicle.brand }} -
+              {{ vehicle.year }})</span
+            >
+          </mat-option>
+        </ng-container>
+      </mat-autocomplete>
     </mat-form-field>
+
+    <br />
+
+    <ng-container *ngIf="errorMsg; else elseTemplate">
+      {{ errorMsg }}
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div class="movie-details" *ngIf="selectedVehicle?.name">
+        <div>
+          <img [src]="selectedVehicle?.photoURL" style="height: 250px" />
+        </div>
+        <div>
+          <h3>Selected Value: {{ selectedVehicle?.brand }}</h3>
+          <ul>
+            <li>Year: {{ selectedVehicle?.year }}</li>
+          </ul>
+        </div>
+      </div>
+    </ng-template>
   </form>
 
   <div class="home-content">
@@ -56,13 +104,18 @@
       </div>
     </div>
 
-    <div class="home-latest-vehicles">
+    <div>
       <h2>Últimos veículos adicionados a base</h2>
-      <div *ngFor="let carro of carros">
-        <app-card-lastest-vehicles
-          [vehicle]="carro"
-        ></app-card-lastest-vehicles>
+      <div *ngIf="carros; else elseBlock" class="home-latest-vehicles">
+        <div *ngFor="let carro of carros">
+          <app-card-lastest-vehicles
+            [vehicle]="carro"
+          ></app-card-lastest-vehicles>
+        </div>
       </div>
+      <ng-template #elseBlock
+        ><mat-progress-bar mode="indeterminate"></mat-progress-bar
+      ></ng-template>
     </div>
   </div>
 </div>

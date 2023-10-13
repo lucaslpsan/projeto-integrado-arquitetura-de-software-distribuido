@@ -1,20 +1,29 @@
+import { AsyncPipe, CommonModule, NgFor } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CardLastestVehiclesComponent } from './card-lastest-vehicles/card-lastest-vehicles.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCardModule } from '@angular/material/card';
-import { HomepageComponent } from './homepage.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CardLastestVehiclesComponent } from './card-lastest-vehicles/card-lastest-vehicles.component';
+import { HomepageComponent } from './homepage.component';
 
 @NgModule({
   declarations: [CardLastestVehiclesComponent, HomepageComponent],
   imports: [
     CommonModule,
-    MatCardModule,
+    FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    NgFor,
+    AsyncPipe,
+    MatProgressBarModule,
+    MatCardModule,
+    MatIconModule,
   ],
   exports: [CardLastestVehiclesComponent],
 })

@@ -4,5 +4,8 @@
 </div>
 
 <div class="meus-veiculos">
-  <h3>Meus veículos</h3>
+  <h3>Minha Garagem</h3>
+  <div class="my-vehicles" *ngFor="let vechicle of myGarage">
+    <app-card-my-vehicles [myVehicle]="vechicle"></app-card-my-vehicles>
+  </div>
 </div>

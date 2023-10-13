@@ -9,8 +9,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.NoCredentialsProvider;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
+
 @SpringBootApplication
 @EnableTransactionManagement
+@OpenAPIDefinition(info = @Info(title = "Auto Info API", version = "1.0", description = "Projeto Auto Info - API da plataforma e módulo de usuário e ficha técnica."))
+@SecurityScheme(name = "FirebaseAuth", scheme = "bearer", bearerFormat = "JWT", type = SecuritySchemeType.HTTP, in = SecuritySchemeIn.HEADER)
 public class AutoInfoApplication {
 
 	@Bean

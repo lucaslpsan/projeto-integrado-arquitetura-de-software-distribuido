@@ -14,9 +14,12 @@
  * limitations under the License.
  */
 
-package dev.lucaslpsan.autoInfo.users;
+package dev.lucaslpsan.autoInfo.users.repositories;
 
 import com.google.cloud.spring.data.firestore.FirestoreReactiveRepository;
+
+import dev.lucaslpsan.autoInfo.users.User;
+
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 

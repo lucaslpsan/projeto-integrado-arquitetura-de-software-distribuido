@@ -16,6 +16,9 @@
 
 package dev.lucaslpsan.autoInfo.users;
 
+import java.util.ArrayList;
+
+import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.annotation.DocumentId;
 import com.google.cloud.spring.data.firestore.Document;
 
@@ -36,8 +39,16 @@ import lombok.NoArgsConstructor;
 public class User {
 
   @DocumentId
+  String id;
+
   String name;
 
   int age;
+
+  ArrayList<String> garage;
+
+  public User(String id) {
+    this.id = id;
+  }
 
 }

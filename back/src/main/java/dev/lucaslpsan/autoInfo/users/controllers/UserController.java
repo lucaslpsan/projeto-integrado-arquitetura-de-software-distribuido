@@ -14,11 +14,15 @@
  * limitations under the License.
  */
 
-package dev.lucaslpsan.autoInfo.users;
+package dev.lucaslpsan.autoInfo.users.controllers;
 
 import com.google.cloud.spring.data.firestore.FirestoreReactiveOperations;
 import com.google.cloud.spring.data.firestore.FirestoreTemplate;
 
+import dev.lucaslpsan.autoInfo.users.PhoneNumber;
+import dev.lucaslpsan.autoInfo.users.User;
+import dev.lucaslpsan.autoInfo.users.repositories.UserRepository;
+import dev.lucaslpsan.autoInfo.users.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Arrays;
@@ -70,7 +74,7 @@ public class UserController {
 
   @GetMapping("/phones")
   private Flux<PhoneNumber> getPhonesByName(@RequestParam String name) {
-    return this.firestoreTemplate.withParent(new User(name, 0)).findAll(PhoneNumber.class);
+    return this.firestoreTemplate.withParent(new User(name)).findAll(PhoneNumber.class);
   }
 
   @GetMapping("/removeUser")
@@ -81,7 +85,7 @@ public class UserController {
   @GetMapping("/removePhonesForUser")
   private Mono<String> removePhonesByName(@RequestParam String name) {
     return this.firestoreTemplate
-        .withParent(new User(name, 0))
+        .withParent(new User(name))
         .deleteAll(PhoneNumber.class)
         .map(numRemoved -> "successfully removed " + numRemoved + " phone numbers");
   }

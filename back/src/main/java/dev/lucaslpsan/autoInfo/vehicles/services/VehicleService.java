@@ -41,6 +41,18 @@ public class VehicleService {
         log.info(writeResult.get().toString());
     }
 
+    public List<Vehicle> searchVehiclesByNameWithLimitQuery(@NonNull String text) throws Exception {
+        // [START firestore_query_order_desc_limit]
+        Query query = collection.whereGreaterThanOrEqualTo("name", text);
+
+        ApiFuture<QuerySnapshot> future = query.get();
+        // [END firestore_query_order_desc_limit]
+
+        List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+
+        return documents.stream().map(d -> d.toObject(Vehicle.class)).toList();
+    }
+
     public List<Vehicle> searchVehiclesWithTimestapDescAndLimitQuery() throws Exception {
         // [START firestore_query_order_desc_limit]
         Query query = collection.orderBy("name", Direction.DESCENDING).limit(3);
