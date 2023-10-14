@@ -1,0 +1,121 @@
+<div class="home">
+  <div class="home-icon-principal">
+    <img src="../../../assets/auto-info-icon.svg" alt="Ícone do Auto Info" />
+    <h1>Auto Info</h1>
+    <h3>Guarde o histórico de seu veículo</h3>
+  </div>
+
+  <form class="home-form">
+    <label for="site-search">Pesquisa de ficha técnica</label>
+
+    <mat-form-field class="home-full-width">
+      <input
+        matInput
+        placeholder="Ex. Honda Civic 2023"
+        [matAutocomplete]="auto"
+        [formControl]="searchVehiclesCtrl"
+        [(ngModel)]="selectedVehicle"
+      />
+      <button
+        *ngIf="selectedVehicle"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="clearSelection()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-autocomplete
+        [panelWidth]="400"
+        #auto="matAutocomplete"
+        (optionSelected)="onSelected()"
+        [displayWith]="displayWith"
+      >
+        <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+        <ng-container *ngIf="!isLoading">
+          <mat-option
+            *ngFor="let vehicle of filteredVehicles"
+            [value]="vehicle"
+          >
+            <span
+              ><b>{{ vehicle.name }}</b> ({{ vehicle.brand }} -
+              {{ vehicle.year }})</span
+            >
+          </mat-option>
+        </ng-container>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <br />
+
+    <ng-container *ngIf="errorMsg; else elseTemplate">
+      {{ errorMsg }}
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div class="movie-details" *ngIf="selectedVehicle?.name">
+        <div>
+          <img [src]="selectedVehicle?.photoURL" style="height: 250px" />
+        </div>
+        <div>
+          <h3>Selected Value: {{ selectedVehicle?.brand }}</h3>
+          <ul>
+            <li>Year: {{ selectedVehicle?.year }}</li>
+          </ul>
+        </div>
+      </div>
+    </ng-template>
+  </form>
+
+  <div class="home-content">
+    <div class="home-funcionalidades">
+      <div class="item-funcionalidade">
+        <img
+          src="../../../assets/car-search-icon.svg"
+          alt="Ícone de pesquisa de carro"
+        />
+        <p>
+          Pesquisa por veículos seperados por marca, modelo e ano e saiba tudo
+          sobre ele.
+        </p>
+      </div>
+      <div class="item-funcionalidade">
+        <img
+          src="../../../assets/car-save-icon.svg"
+          alt="Ícone de pesquisa de carro"
+        />
+        <p>Guarde as manutenções e histórico de seu veículo.</p>
+      </div>
+      <div class="item-funcionalidade">
+        <img
+          src="../../../assets/car-notification-icon.svg"
+          alt="Ícone de pesquisa de carro"
+        />
+        <p>
+          Receba notificações sobre as próximas manutenções de seu veículo e
+          sempre ande em dias.
+        </p>
+      </div>
+      <div class="item-funcionalidade">
+        <img
+          src="../../../assets/car-parts-icon.svg"
+          alt="Ícone de pesquisa de carro"
+        />
+        <p>Identifique e adquira as peças corretas via catálogo.</p>
+      </div>
+    </div>
+
+    <div>
+      <h2>Últimos veículos adicionados a base</h2>
+      <div *ngIf="carros; else elseBlock" class="home-latest-vehicles">
+        <div *ngFor="let carro of carros">
+          <app-card-lastest-vehicles
+            [vehicle]="carro"
+          ></app-card-lastest-vehicles>
+        </div>
+      </div>
+      <ng-template #elseBlock
+        ><mat-progress-bar mode="indeterminate"></mat-progress-bar
+      ></ng-template>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+.home {
+  padding: 5vw;
+}
+.home-icon-principal {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+}
+.home-icon-principal img {
+  height: 60px;
+}
+
+.home-form {
+  display: grid;
+  justify-content: center;
+}
+
+.home-content {
+  margin-top: 5vh;
+}
+
+.home-full-width {
+  width: 70vw;
+}
+
+.home-funcionalidades {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+.home-funcionalidades img {
+  height: 50px;
+}
+
+.item-funcionalidade {
+  display: grid;
+  width: 20vw;
+  align-items: center;
+  justify-items: center;
+  gap: 10px;
+}
+
+.home-latest-vehicles {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+@media only screen and (max-width: 800px) {
+  .home-latest-vehicles {
+    grid-template-columns: 1fr;
+  }
+}

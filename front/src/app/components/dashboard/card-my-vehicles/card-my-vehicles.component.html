@@ -1,0 +1,78 @@
+<mat-card>
+  <!-- <mat-card-header>{{ myVehicle.brand }} {{ myVehicle.name }}</mat-card-header> -->
+  <mat-card-content>
+    <div class="content-my-vehicle"></div>
+
+    <mat-grid-list cols="2" rowHeight="1.6:1">
+      <mat-grid-tile>
+        <img
+          mat-card-image
+          src="https://storage.googleapis.com/club-manual/uploads/2022-01-31/%242y%2410%24wrZCL10C1RCJh0SU5THtsexB9zMHfX2te4dQ18p.ZQNA46Jt.YQ0i/5336car1643638759730.jpg"
+        />
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <table class="end-sheet">
+          <tr>
+            <td>Cavalos</td>
+            <td>{{ myVehicle.expenses.fuel | currency }}</td>
+          </tr>
+          <tr>
+            <td>Combustão</td>
+            <td>{{ myVehicle.expenses.maintenance | currency }}</td>
+          </tr>
+        </table>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card class="card-quilometragem">
+          <mat-card-header>
+            <mat-icon>speed</mat-icon>
+            <h4>Atualizar a quilometragem</h4></mat-card-header
+          >
+          <mat-card-content>
+            <mat-form-field class="my-vehicles-full-width">
+              <mat-label>Quilometragem gravada</mat-label>
+              <input
+                matInput
+                type="text"
+                mask="separator.3"
+                suffix=" km"
+                [(ngModel)]="myVehicle.km.total"
+                #input
+                placeholder="Ex. 102.000"
+              />
+              <mat-hint align="end">Última atualização: </mat-hint>
+            </mat-form-field>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>ATUALIZAR</button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>4</mat-grid-tile>
+    </mat-grid-list>
+
+    <div id="troca-de-oleo">
+      <mat-icon>oil_barrel</mat-icon>
+      <mat-progress-bar
+        mode="determinate"
+        value="{{ porcetagemParaTrocaDeOleo() }}"
+      ></mat-progress-bar>
+      <div id="label-troca-de-oleo">
+        <div>
+          <span>Troca de óleo anterior</span><br />
+          <span
+            >{{ myVehicle.oil.previousExchange | number }} km ({{
+              myVehicle.oil.datePreviousExchange
+                | timestampFirestorePipe
+                | date : "dd/MM/yyyy HH:mm"
+            }})</span
+          >
+        </div>
+        <div>
+          <span>Próxima troca de óleo</span><br />
+          <span>{{ myVehicle.oil.nextExchange | number }} km</span>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

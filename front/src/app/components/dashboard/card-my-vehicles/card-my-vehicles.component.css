@@ -1,0 +1,58 @@
+mat-card::ng-deep.mat-card-header-text {
+  width: 100%;
+}
+
+.quilometragem p {
+  font-size: small;
+}
+
+.my-vehicles-full-width {
+  width: 100%;
+}
+
+.card-quilometragem {
+  width: 250px;
+}
+
+mat-grid-tile img {
+  width: 240px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: var(--mdc-elevated-card-container-shape);
+}
+
+mat-card-header {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+mat-card-header h4 {
+  margin: 5px;
+}
+
+#troca-de-oleo {
+  margin: 35px 15px;
+}
+
+#troca-de-oleo mat-progress-bar {
+  margin: 15px;
+  width: 95%;
+}
+
+#label-troca-de-oleo {
+  display: flex;
+  justify-content: space-between;
+}
+
+#label-troca-de-oleo div > span:first-child {
+  font-weight: bold;
+}
+
+#label-troca-de-oleo div:last-child {
+  text-align: end;
+}
+
+tr td:first-child {
+  font-weight: bold;
+}

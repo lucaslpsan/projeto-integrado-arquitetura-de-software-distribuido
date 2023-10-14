@@ -1,0 +1,101 @@
+<mat-drawer-container class="header-container" autosize>
+  <mat-drawer #drawer mode="side">
+    <nav class="header-sidenav">
+      <a
+        mat-button
+        routerLink="/"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Principal</a
+      >
+      <a
+        mat-button
+        routerLink="/adicionar-nova-ficha-tecnica"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Cadastrar Nova Ficha Técnica</a
+      >
+      <a
+        mat-button
+        routerLink="/sobre"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Sobre</a
+      >
+      <a
+        mat-button
+        routerLink="/termos-de-uso"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Termos de uso</a
+      >
+    </nav>
+  </mat-drawer>
+
+  <div class="header-sidenav-content">
+    <p>
+      <mat-toolbar color="primary">
+        <button
+          mat-icon-button
+          class="header-icon"
+          aria-label="Example icon-button with menu icon"
+          (click)="drawer.toggle()"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+        <a routerLink="/" class="header-title"
+          ><img
+            src="../../../assets/auto-info-icon.svg"
+            alt="Ícone do Auto Info"
+          /><span>{{ title }}</span></a
+        >
+        <span class="header-spacer"></span>
+        <div *ngIf="this.authService.isLoggedIn; else usuarioNaoLogado">
+          <button
+            mat-button
+            aria-label="Botão para fazer login no AutoInfo"
+            title="Botão para fazer login no AutoInfo"
+            routerLink="/sign-in"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+          >
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Ícone de usuário"
+              fontIcon="dashboard"
+            ></mat-icon>
+            Dashboard
+          </button>
+        </div>
+        <ng-template #usuarioNaoLogado>
+          <button
+            mat-button
+            aria-label="Botão para fazer login no AutoInfo"
+            title="Botão para fazer login no AutoInfo"
+            routerLink="/sign-in"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+          >
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Ícone de usuário"
+              fontIcon="person"
+            ></mat-icon>
+            Login
+          </button>
+        </ng-template>
+        <button
+          mat-icon-button
+          class="header-icon"
+          aria-label="Example icon-button with share icon"
+        >
+          <mat-icon>share</mat-icon>
+        </button>
+      </mat-toolbar>
+    </p>
+  </div>
+
+  <div class="template-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

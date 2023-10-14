@@ -1,0 +1,26 @@
+<div class="profile">
+  <mat-form-field class="sign-in-full-width">
+    <mat-label>Nome</mat-label>
+    <input
+      matInput
+      matNativeControl
+      type="text"
+      class="formControl"
+      placeholder="Seu nome"
+      value="{{ perfil?.displayName }}"
+      #userName
+      required
+    />
+  </mat-form-field>
+
+  <mat-form-field class="sign-in-full-width">
+    <mat-label>E-mail</mat-label>
+    <input
+      matInput
+      class="formControl"
+      placeholder="Senha cadastrada"
+      value="{{ perfil?.email }}"
+      disabled
+    />
+  </mat-form-field>
+</div>

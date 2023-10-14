@@ -1,0 +1,22 @@
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.vertical-align {
+  display: flex;
+  flex-direction: column;
+}
+
+.end-sheet tr td:first-child {
+  font-weight: bold;
+}
+
+.space-bottom-buttons {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}

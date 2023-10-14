@@ -1,0 +1,14 @@
+.sign-in-form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.forgotPassword {
+  display: flex;
+  justify-content: center;
+}
+.redirectToLogin {
+  display: flex;
+  justify-content: center;
+}

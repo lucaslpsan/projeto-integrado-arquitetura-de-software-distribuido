@@ -1,0 +1,44 @@
+.header-spacer {
+  flex: 1 1 auto;
+}
+
+.header-title {
+  text-decoration: none;
+  color: unset;
+  font-size: 1.3em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-title img {
+  width: 40px;
+}
+
+mat-drawer-container,
+mat-drawer-content {
+  display: block;
+  height: 100%;
+}
+main {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.header-sidenav {
+  padding: 20px;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.header-sidenav a {
+  display: grid;
+  align-items: center;
+  justify-content: start;
+}
+
+.template-content {
+  padding: 10px;
+}

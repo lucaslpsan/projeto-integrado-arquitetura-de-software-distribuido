@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auto-info
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: auto-info
+  template:
+    metadata:
+      labels:
+        app: auto-info
+    spec:
+      containers:
+        - name: auto-info
+          image: auto-info
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auto-info
+spec:
+  selector:
+    app: auto-info
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer

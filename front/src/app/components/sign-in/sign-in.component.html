@@ -1,0 +1,70 @@
+<div class="displayTable">
+  <div class="displayTableCell">
+    <div class="authBlock">
+      <h3>Entre em sua conta</h3>
+
+      <form class="sign-in-form">
+        <mat-form-field class="sign-in-full-width">
+          <mat-label>E-mail</mat-label>
+          <input
+            matInput
+            matNativeControl
+            type="email"
+            class="formControl"
+            placeholder="E-mail registrado"
+            #userName
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="sign-in-full-width">
+          <mat-label>Senha</mat-label>
+          <input
+            matInput
+            matNativeControl
+            type="password"
+            class="formControl"
+            placeholder="Senha cadastrada"
+            #userPassword
+            required
+          />
+        </mat-form-field>
+        <div class="formGroup">
+          <button
+            type="submit"
+            mat-raised-button
+            color="primary"
+            (click)="authService.SignIn(userName.value, userPassword.value)"
+          >
+            Entrar
+          </button>
+        </div>
+      </form>
+
+      <!-- Calling SignIn Api from AuthService -->
+
+      <div class="forgotPassword">
+        <a
+          mat-button
+          routerLink="/forgot-password"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Esqueceu a senha?</a
+        >
+      </div>
+    </div>
+
+    <div class="redirectToLogin">
+      <span
+        >Ainda não tem uma conta no Auto Info?
+        <a
+          mat-button
+          routerLink="/register-user"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Registre-se!</a
+        ></span
+      >
+    </div>
+  </div>
+</div>
